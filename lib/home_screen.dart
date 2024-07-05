@@ -13,6 +13,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<Category> categories = [];
+  List<Category> displayList = [];
+
   bool isLoading = true;
 
   @override
@@ -32,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {
         categories =
             categoryList.map((json) => Category.fromJson(json)).toList();
+        displayList = List.from(categories);
         isLoading = false;
       });
     } else {
@@ -39,18 +42,24 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+//!
+  void onSearch(String value) {
+    setState(() {
+      displayList = categories
+          .where((e) => e.name.toLowerCase().contains(value.toLowerCase()))
+          .toList();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Meal Categories'),
+        title: TextField(
+          onChanged: onSearch,
+          decoration: InputDecoration(hintText: 'Search an item'),
+        ),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.search,
-            ),
-          ),
           IconButton(
             onPressed: () {
               Navigator.push(
@@ -74,9 +83,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   ListView homeCategoryCard() {
     return ListView.builder(
-      itemCount: categories.length,
+      itemCount: displayList.length,
       itemBuilder: (context, index) {
-        final category = categories[index];
+        final category = displayList[index];
         return Card(
           elevation: 2,
           // TODO We can use Column bcwz there is only three fields Image,itemname, and Description so i use card here.
