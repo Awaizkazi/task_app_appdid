@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:task_app_appdid/categories.dart';
 import 'package:task_app_appdid/random.dart';
 
+import 'meal_details.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -79,14 +81,11 @@ class HomeScreenState extends State<HomeScreen> {
       ),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
-          : GestureDetector(
-              child: homeCategoryCard(),
-              onTap: () => const CategoryOfProduct(),
-            ),
+          : homeCategory(),
     );
   }
 
-  ListView homeCategoryCard() {
+  ListView homeCategory() {
     return ListView.builder(
       itemCount: displayList.length,
       itemBuilder: (context, index) {

@@ -47,7 +47,7 @@ class CategoryOfProductState extends State<CategoryOfProduct> {
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
           : GestureDetector(
-              onTap: () => MealDetailsScreen(),
+              onTap: () => const MealDetailsScreen(),
               child: GridView.builder(
                 padding: const EdgeInsets.all(10.0),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -90,7 +90,7 @@ class Meal {
 class MealCard extends StatelessWidget {
   final Meal meal;
 
-  const MealCard({Key? key, required this.meal}) : super(key: key);
+  const MealCard({super.key, required this.meal});
 
   @override
   Widget build(BuildContext context) {

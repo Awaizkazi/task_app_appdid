@@ -46,41 +46,42 @@ class RandomProductShowState extends State<RandomProductShow> {
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
           : meal != null
-              ? Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.network(
-                          meal!.imageUrl,
-                          fit: BoxFit.cover,
+              ? Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: ListView(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.network(
+                            meal!.imageUrl,
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        meal!.name,
-                        style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
+                        const SizedBox(height: 16),
+                        Text(
+                          meal!.name,
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: 16),
-                      const Text(
-                        'Instructions:',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                        const SizedBox(height: 16),
+                        const Text(
+                          'Instructions:',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        meal!.instructions,
-                        style: const TextStyle(fontSize: 16),
-                      ),
-                    ],
+                        const SizedBox(height: 8),
+                        Text(
+                          meal!.instructions,
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                      ],
+                    ),
                   ),
                 )
               : const Center(child: Text('No meal data')),
