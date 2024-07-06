@@ -65,7 +65,8 @@ class HomeScreenState extends State<HomeScreen> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => RandomProductShow()),
+                MaterialPageRoute(
+                    builder: (context) => const RandomProductShow()),
               );
             },
             icon: const Icon(
@@ -80,7 +81,7 @@ class HomeScreenState extends State<HomeScreen> {
           ? const Center(child: CircularProgressIndicator())
           : GestureDetector(
               child: homeCategoryCard(),
-              onTap: () => CategoryOfProduct(),
+              onTap: () => const CategoryOfProduct(),
             ),
     );
   }
