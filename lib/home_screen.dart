@@ -3,15 +3,16 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:task_app_appdid/categories.dart';
+import 'package:task_app_appdid/random.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  HomeScreenState createState() => HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreenState extends State<HomeScreen> {
   List<Category> categories = [];
   List<Category> displayList = [];
 
@@ -57,14 +58,14 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: TextField(
           onChanged: onSearch,
-          decoration: InputDecoration(hintText: 'Search an item'),
+          decoration: const InputDecoration(hintText: 'Search an item'),
         ),
         actions: [
           IconButton(
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CategoryOfProduct()),
+                MaterialPageRoute(builder: (context) => RandomProductShow()),
               );
             },
             icon: const Icon(

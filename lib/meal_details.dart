@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class MealDetailsScreen extends StatefulWidget {
+  const MealDetailsScreen({super.key});
+
   @override
-  _MealDetailsScreenState createState() => _MealDetailsScreenState();
+  MealDetailsScreenState createState() => MealDetailsScreenState();
 }
 
-class _MealDetailsScreenState extends State<MealDetailsScreen> {
+class MealDetailsScreenState extends State<MealDetailsScreen> {
   Map<String, dynamic>? mealDetails;
 
   @override

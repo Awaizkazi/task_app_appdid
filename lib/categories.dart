@@ -5,11 +5,13 @@ import 'package:http/http.dart' as http;
 import 'package:task_app_appdid/meal_details.dart';
 
 class CategoryOfProduct extends StatefulWidget {
+  const CategoryOfProduct({super.key});
+
   @override
-  _CategoryOfProductState createState() => _CategoryOfProductState();
+  CategoryOfProductState createState() => CategoryOfProductState();
 }
 
-class _CategoryOfProductState extends State<CategoryOfProduct> {
+class CategoryOfProductState extends State<CategoryOfProduct> {
   List<Meal> meals = [];
   bool isLoading = true;
 

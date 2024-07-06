@@ -18,27 +18,3 @@ Future<UserCredential> signInWithGoogle() async {
   // Once signed in, return the UserCredential
   return await FirebaseAuth.instance.signInWithCredential(credential);
 }
-
-// class FirebaseServices {
-//   final auth = FirebaseAuth.instance;
-//   final googleSignIn = GoogleSignIn();
-
-//   signInWithGoogle() async {
-//     try {
-//       final GoogleSignInAccount? googleSignInAccount =
-//           await googleSignIn.signIn();
-//       if (googleSignInAccount != null) {
-//         final GoogleSignInAuthentication googleSignInAuthentication =
-//             await googleSignInAccount.authentication;
-
-//         final AuthCredential authCredential = GoogleAuthProvider.credential(
-//           accessToken: googleSignInAuthentication.accessToken,
-//           idToken: googleSignInAuthentication.idToken,
-//         );
-//         await auth.signInWithCredential(authCredential);
-//       }
-//     } on FirebaseAuthException catch (e) {
-//       print(e.toString());
-//     }
-//   }
-// }
