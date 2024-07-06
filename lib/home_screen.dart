@@ -77,7 +77,10 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
-          : homeCategoryCard(),
+          : GestureDetector(
+              child: homeCategoryCard(),
+              onTap: () => CategoryOfProduct(),
+            ),
     );
   }
 

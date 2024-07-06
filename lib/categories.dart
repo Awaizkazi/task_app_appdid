@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:task_app_appdid/meal_details.dart';
 
 class CategoryOfProduct extends StatefulWidget {
   @override
@@ -43,19 +44,22 @@ class _CategoryOfProductState extends State<CategoryOfProduct> {
       ),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
-          : GridView.builder(
-              padding: const EdgeInsets.all(10.0),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 3 / 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
+          : GestureDetector(
+              onTap: () => MealDetailsScreen(),
+              child: GridView.builder(
+                padding: const EdgeInsets.all(10.0),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 3 / 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                ),
+                itemCount: meals.length,
+                itemBuilder: (context, index) {
+                  final meal = meals[index];
+                  return MealCard(meal: meal);
+                },
               ),
-              itemCount: meals.length,
-              itemBuilder: (context, index) {
-                final meal = meals[index];
-                return MealCard(meal: meal);
-              },
             ),
     );
   }
@@ -83,7 +87,7 @@ class Meal {
 
 class MealCard extends StatelessWidget {
   final Meal meal;
-  
+
   const MealCard({Key? key, required this.meal}) : super(key: key);
 
   @override
